@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Interior from './components/interior';
 import HomeAppliance from './components/homeAppliance';
 import HouseSaleRent from './components/houseSaleRent';
+import Logo from "./images/logo.svg"
 function App() {
   const[homeOpen,setHomeOpen]=useState(false);
   const[homeAppOpen,setHomeAppOpen]=useState(false);
@@ -37,11 +38,11 @@ let handleCloseAll=()=>{
 }
   return (
     <div className="App">
-    <div className='header'><h1>GreatServes</h1></div>
+    <div className='header'><img className="logo" src={Logo} alt="logo"/><h1>GreatServes</h1></div>
       
       <div className='clikables'>
       {
-        homeOpen? null: <><div className='HomeInterior box'><img onClick={handleHomeDecorOpen} className="imagelogo" src={Homelogo} alt="homelogo"/></div>
+        (homeOpen ||homeAppOpen)? null: <><div className='HomeInterior box'><img onClick={handleHomeDecorOpen} className="imagelogo" src={Homelogo} alt="homelogo"/></div>
       <div className='HomeAppliance box '><img onClick={handleHomeAppOpen} className="imagelogo" src={Appliancelogo} alt="homelogo"/> </div>
       <div className='PropertyMart box commingsoon'><img onClick={handlePropertyOpen} className="imagelogo" src={PropertyMartLogo} alt="homelogo"/> <div className='soon'>COMING SOON</div></div></>}
      
@@ -57,7 +58,7 @@ let handleCloseAll=()=>{
         propertyOpen ? <> <CloseIcon className='X' onClick={handleCloseAll} fontSize="large" /> <HouseSaleRent/> </>:null
       }
 
-      <footer>All rights reserved . 2022 GreatServes PVT LTD</footer>
+      <footer>All rights reserved . © 2022 GreatServes PVT LTD</footer>
     </div>
 
   );
